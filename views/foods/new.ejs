@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pantry</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Add Food to my Pantry</h1>
+
+    <form action="/users/<%= user._id %>/foods" method="POST">
+
+      <div>
+      <label for="foodName">Food Name:</label>
+        <input type="text" name="foodName" id="foodName" required />
+      </div>
+
+      <div>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" required />
+      </div>
+
+      <div>
+        <label for="foodType">Food Type:</label>
+        <select name="foodType" id="foodType" required >
+            <option value="canned">Canned</option>
+            <option value="jarred">Jarred</option>
+            <option value="refrigerated item">Refrigerated Item</option>
+            <option value="frozen item">Frozen Item</option>
+            <option value="fresh vegetable">Fresh Vegetable</option>
+            <option value="fresh fruit">Fresh Fruit</option>
+            <option value="snack item">Snack Item</option>
+            <option value="seasoning">Seasoning</option>
+            <option value="staple">Staple</option>
+            <option value="beverage">Beverage</option>
+        </select>
+      </div>
+
+        <button type="submit">Add Food</button>
+
+      </form>
+  </body>
+</html>
