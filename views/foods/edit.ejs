@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit <%= food.foodName %></title>
+  </head>
+  <body>
+    <form action="/users/<%=userId%>/foods/<%=food._id%>?_method=PUT" method="POST">
+          <div>
+        <label for="foodName">Food Name:</label>
+        <input type="text" name="foodName" id="foodName" value = "<%= food.foodName %>" required />
+      </div>
+
+      <div>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" value = "<%= food.quantity %>"required />
+      </div>
+
+      <div>
+        <label for="foodType">Food Type:</label>
+        <select name="foodType" id="foodType" required>
+          <option value="">Please select</option>
+          <option <%= food.foodType === "canned" ? "selected" : "" %> value="canned">Canned</option>
+          <option <%= food.foodType === "jarred" ? "selected" : "" %> value="jarred">Jarred</option>
+          <option <%= food.foodType === "refrigerated item" ? "selected" : "" %> value="refrigerated item">Refrigerated Item</option>
+          <option <%= food.foodType === "frozen item" ? "selected" : "" %> value="frozen item">Frozen Item</option>
+          <option <%= food.foodType === "fresh vegetable" ? "selected" : "" %> value="fresh vegetable">Fresh Vegetable</option>
+          <option <%= food.foodType === "fresh fruit" ? "selected" : "" %> value="fresh fruit">Fresh Fruit</option>
+          <option <%= food.foodType === "snack item" ? "selected" : "" %> value="snack item">Snack Item</option>
+          <option <%= food.foodType === "seasoning" ? "selected" : "" %> value="seasoning">Seasoning</option>
+          <option <%= food.foodType === "staple" ? "selected" : "" %> value="staple">Staple</option>
+          <option <%= food.foodType === "beverage" ? "selected" : "" %> value="beverage">Beverage</option>
+        </select>
+      </div>
+
+      <button type="submit">Edit Food</button>
+    </form>
+  </body>
 </html>
