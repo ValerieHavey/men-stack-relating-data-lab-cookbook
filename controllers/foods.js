@@ -134,23 +134,14 @@ Description: Update edited food item
 
 router.put("/:foodId", async (req, res) => {
   try {
-    //       const user = await User.findById(req.session.user._id);
-    //       const food = user.pantry.find((food) => {
-    //           return food._id.toString() === req.params.foodId;
-    //       });
-    //       food.foodName = req.body.foodName
-    //       food.quantity = req.body.quantity
-    //       food.foodType = req.body.foodType
-    //         await user.save()
-    await User.updateOne(
-      {
-        _id: req.session.user._id,
-        "pantry._id": new ObjectId(req.params.foodId),
-      },
-      {
-        $set: {"pantry.$":req.body},
-      }
-    );
+          const user = await User.findById(req.session.user._id);
+          const food = user.pantry.find((food) => {
+              return food._id.toString() === req.params.foodId;
+          });
+          food.foodName = req.body.foodName
+          food.quantity = req.body.quantity
+          food.foodType = req.body.foodType
+            await user.save()
 
     res.redirect("/");
   } catch (error) {
