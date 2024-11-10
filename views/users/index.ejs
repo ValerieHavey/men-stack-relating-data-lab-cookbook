@@ -7,15 +7,12 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Welcome to my Pantry</h1>
-    <% if (isMe) { %>
-    <a href="/users/<%= userId %>/foods/new">Create New Food Item</a>
-    <% } %>
+    <h1>Welcome to The Community Pantry</h1>
     <ul>
-      <% pantry.forEach((food) => { %>
+      <% allUsers.forEach((user) => { %>
       <li>
-        <a href="/users/<%=userId %>/foods/<%=food._id %>"
-          ><%= food.foodName %></a
+        <a href="/users/<%=user._id %>/foods/"
+          ><%= user.username %></a
         >
       </li>
       <% }); %>
